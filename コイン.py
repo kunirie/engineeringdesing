@@ -32,7 +32,7 @@ for i in range(0,width1) : # X方向のループ
     file.write('G1')
     for j in reversed(range(0,height1)): # Y方向のループ
          color1=(gry[j,i]) #各ピクセルの濃淡情報を変数にセット
-         Z1=(Zmax-Zmin)*(255-color1)/255+Zmin #濃淡情報を高さ情報に変換(黒が最大値)
+         Z1=(Zmax-Zmin)*(color1-255)/255+Zmin #濃淡情報を高さ情報に変換(黒い方を削る)
          j1=height1-1-j
          Command3=['Y',str(round(j1*pik,3)),'Z',str(round(Z1,3)),'\n']
          file.writelines(Command3)

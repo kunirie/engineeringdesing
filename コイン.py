@@ -18,7 +18,7 @@ Zmin=-0.1 #　最小Z高さ
 pik=0.1 # 1ピクセルを何ミリにするかを設定
 Ap_Z=5.0 #　アプローチ高さ
 
-img = cv2.imread('Oita.bmp') # 画像の読込
+img = cv2.imread('kou.bmp') # 画像の読込
 gry=cv2.cvtColor(img,cv2.COLOR_RGB2GRAY) # グレイスケールに変換
 height1,width1= gry.shape # 画像の高さと幅を変数にセット
 file = open('output.NC', 'w') # 書き込みファイルを設定

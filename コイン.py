@@ -21,7 +21,7 @@ Ap_Z=5.0 #　アプローチ高さ
 img = cv2.imread('mon.bmp') # 画像の読込
 gry=cv2.cvtColor(img,cv2.COLOR_RGB2GRAY) # グレイスケールに変換
 height1,width1= gry.shape # 画像の高さと幅を変数にセット
-file = open('mon.NC', 'w') # 書き込みファイルを設定
+file = open('output.NC', 'w') # 書き込みファイルを設定
 header(file) # NCプログラムのヘッダー部分をファイルに書き込み
 
 for i in range(0,width1) : # X方向のループ
@@ -32,7 +32,7 @@ for i in range(0,width1) : # X方向のループ
     file.write('G1')
     for j in reversed(range(0,height1)): # Y方向のループ
          color1=(gry[j,i]) #各ピクセルの濃淡情報を変数にセット
-         Z1=(Zmax-Zmin)*(color1-255)/255+Zmin #濃淡情報を高さ情報に変換(黒い方をふかく削る)
+         Z1=(Zmin-Zmax)*(255-color1)/255 #濃淡情報を高さ情報に変換(黒い方を削る)
          j1=height1-1-j
          Command3=['Y',str(round(j1*pik,3)),'Z',str(round(Z1,3)),'\n']
          file.writelines(Command3)
